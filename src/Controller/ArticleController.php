@@ -21,10 +21,19 @@ use App\Repository\LiensRepository;
 class ArticleController extends AbstractController
 {
     #[Route('/', name: 'article_index', methods: ['GET'])]
-    public function index(ArticleRepository $articleRepository, LiensRepository $liensRepository): Response
+    public function index(ArticleRepository $articleRepository, LiensRepository $liensRepository, Request $request, PaginatorInterface $paginatorInterface): Response
     {
+        // Méthode findBy qui permet de récupérer les données avec des critères de filtre et de tri
+        $donnees = $this->getDoctrine()->getRepository(Article::class)->findBy([],['id' => 'asc']);
+
+        $articles = $paginatorInterface->paginate(
+            $donnees, // Requête contenant les données à paginer (ici nos articles)
+            $request->query->getInt('page', 1), // Numéro de la page en cours, passé dans l'URL, 1 si aucune page
+            1 // Nombre de résultats par page
+        );
+
         return $this->render('article/index.html.twig', [
-            'articles' => $articleRepository->findAll(),
+            'articles' => $articles,
             'liens' => $liensRepository->findAll(),
         ]);
     }
