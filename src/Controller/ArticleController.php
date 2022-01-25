@@ -7,33 +7,48 @@ use App\Form\ArticleType;
 use App\Repository\ArticleRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-// Appel du bundle KNP Paginator
-use Knp\Component\Pager\PaginatorInterface;
-
 use App\Entity\Liens;
 use App\Repository\LiensRepository;
+
+// On appel la requête pour obtenir le numéro de page
+use Symfony\Component\HttpFoundation\Request;
+
+// On appel le bundle KNP Paginator
+use Knp\Component\Pager\PaginatorInterface;
+
+
 
 #[Route('/article')]
 class ArticleController extends AbstractController
 {
     #[Route('/', name: 'article_index', methods: ['GET'])]
-    public function index(ArticleRepository $articleRepository, LiensRepository $liensRepository, Request $request, PaginatorInterface $paginatorInterface): Response
+    public function index(
+        LiensRepository $liensRepository, 
+        // On ajoute en paramètre Request et PaginatorInterface
+        Request $request,
+        PaginatorInterface $paginatorInterface): Response
     {
-        // Méthode findBy qui permet de récupérer les données avec des critères de filtre et de tri
+        // On récupère les données en les triant en fonction de leur ID dans un odre ascendant
         $donnees = $this->getDoctrine()->getRepository(Article::class)->findBy([],['id' => 'asc']);
 
+        /* 
+            variable que l'on enverra sur la page des articles contenant toutes les informations utiles au bundle KNP Paginator :
+              - les articles
+              - le numéro de page à l'ouverture
+              - le nb d'articles par page
+        */
         $articles = $paginatorInterface->paginate(
-            $donnees, // Requête contenant les données à paginer (ici nos articles)
-            $request->query->getInt('page', 1), // Numéro de la page en cours, passé dans l'URL, 1 si aucune page
-            1 // Nombre de résultats par page
+            $donnees, // variable contenant les données à paginer
+            $request->query->getInt('page', 1), // numéro de la page à l'ouverture de la page des articles
+            2 // on définit le nombre d'articles par page
         );
 
+        // 
         return $this->render('article/index.html.twig', [
-            'articles' => $articles,
+            'articles' => $articles, // envoi de la variable $articles sur la page destinatrice
             'liens' => $liensRepository->findAll(),
         ]);
     }
