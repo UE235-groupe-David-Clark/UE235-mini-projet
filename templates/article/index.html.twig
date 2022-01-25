@@ -3,41 +3,75 @@
 {% block title %}Article index{% endblock %}
 
 {% block body %}
-    <h1>Article index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Category</th>
-                <th>Content</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
+    <div>
+        <h1>Articles</h1>
+        <a href="{{ path('article_new') }}">Create new</a>
+    </div>
+
+    <br/>
+
+    <div>
+
+        <!-- Boucle parcourant le tableau articles -->
         {% for article in articles %}
-            <tr>
-                <td>{{ article.id }}</td>
-                <td>{{ article.title }}</td>
-                <td>
-                    {% if article.Category.name is defined %}
-                        {{ article.Category.name }}
-                    {% endif %}
-                </td>
-                <td>{{ article.content }}</td>
-                <td>
-                    <a href="{{ path('article_show', {'id': article.id}) }}">show</a>
-                    <a href="{{ path('article_edit', {'id': article.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            <div>
 
-    <a href="{{ path('article_new') }}">Create new</a>
+                <div>
+
+                    <!-- Affichage du titre de l'article -->
+                    <h2>{{ article.title }}</h2>
+
+                    <!-- Affichage de l'ID de l'article -->
+                    <span>ID : {{ article.id }}</span>
+
+                </div>
+                <div>
+
+                    <!-- Si l'article appartient à une catégorie -->
+                    {% if article.Category.name is defined %}
+
+                        <!-- Affichage de la catégorie -->
+                        <p>Catégorie : {{ article.Category.name }}</p>
+
+                    {% endif %}
+
+                </div>
+                <div>
+
+                    <!-- Affichage du contenu de l'article -->
+                   <p>{{ article.content }}</p>
+
+                </div>
+                <div>
+
+                    <!-- Lien pour voir l'article -->
+                    <a href="{{ path('article_show', {'id': article.id}) }}">show</a>
+
+                    <!-- Lien pour éditer l'article -->
+                    <a href="{{ path('article_edit', {'id': article.id}) }}">edit</a>
+
+                </div>
+
+
+                {% else %}
+                
+                    <!-- Si aucun n'article n'est trouvé -->
+
+                    <div>
+                        <p>Aucun article trouvé</p>
+                    </div>
+
+            </div>
+        {% endfor %}
+
+    </div>
+
+    <br/>
+
+    <div>
+        <!-- Le bundle KNP Paginator créé les liens menant vers les autres pages automatiquement -->
+        {{ knp_pagination_render(articles) }}
+    </div>
+
 {% endblock %}
