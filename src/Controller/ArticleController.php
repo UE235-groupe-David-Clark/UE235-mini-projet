@@ -11,9 +11,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-// Appel du bundle KNP Paginator
-use Knp\Component\Pager\PaginatorInterface;
-
 use App\Entity\Liens;
 use App\Repository\LiensRepository;
 
