@@ -3,9 +3,13 @@
 {% block title %}Category index{% endblock %}
 
 {% block body %}
-    <h1>Category index</h1>
+    <div class="center">
+        <h1>Category index</h1>
+        <a class="createnew" href="{{ path('category_new') }}">Create new</a>
+    </div>
 
-    <table class="table">
+
+    <table class="table persotable">
         <thead>
             <tr>
                 <th>Id</th>
@@ -31,5 +35,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('category_new') }}">Create new</a>
+    
 {% endblock %}
