@@ -91,3 +91,49 @@ a {
 .bouton-mode:hover {
   font-weight: bold;
 }
+
+.edit {
+  text-align: center;
+  font-size: 1.4rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.delete {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+}
+
+.delete button {
+  background-color: red;
+  color: white;
+}
+
+.delete button:hover {
+  color: white;
+  font-weight: bold;
+}
+
+.new-form {
+  max-width: 1400px !important;
+  margin: auto;
+  font-size: 1.2rem;
+  font-family: 'Courier New', monospace;
+  margin-bottom: 2rem;
+}
+
+.new-form button {
+  background-color: green;
+  color: white;
+  display: block;
+  margin: auto;
+  font-family: 'Calibri';
+  font-size: 1.2rem;
+}
+
+.new-form button:hover {
+  color: white;
+  font-weight: bold;
+}
