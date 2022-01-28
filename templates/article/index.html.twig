@@ -4,15 +4,15 @@
 
 {% block body %}
 
-    <div>
+    <div class="center">
         <h1>Articles</h1>
         <!-- Création d'un nouvel article -->
-        <a href="{{ path('article_new') }}">Create new</a>
+        <a class="createnew" href="{{ path('article_new') }}">Create new</a>
     </div>
 
     <br/>
 
-    <table class="table">
+    <table class="table persotable">
         <thead>
             <tr>
                 <th>Id</th>
@@ -52,11 +52,15 @@
 
                 <td>   
 
+                    <div class="showedit">
+
                     <!-- Lien pour voir l'article -->
                     <a href="{{ path('article_show', {'id': article.id}) }}">show</a>
 
                     <!-- Lien pour éditer l'article -->
                     <a href="{{ path('article_edit', {'id': article.id}) }}">edit</a>
+
+                    </div>
 
                 </td>
 
@@ -74,9 +78,12 @@
         </tbody>
     </table>
 
-    <div>
+    <div class="divpagination">
         <!-- Le bundle KNP Paginator créé automatiquement les liens menant vers les autres pages -->
         {{ knp_pagination_render(articles) }}
     </div>
 
 {% endblock %}
+
+
+

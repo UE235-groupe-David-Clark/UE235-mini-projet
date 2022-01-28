@@ -12,29 +12,6 @@ $(document).ready(function() {
     var $table = $("table");
     var $a = $("a");
 
-    // si l'heure est comprise entre 8 et 17
-	if (date.getHours() >= time1.getHours() && date.getHours() <= time2.getHours()) {
-		
-			// on passe l'id du body en body-day
-			$body.attr("id", "body-day");
-
-			// on change la couleur du texte
-			$table.css({"color":"black"});
-			$a.css({"color":"blue"});
-
-	}
-	// si l'heure n'est pas comprise entre 8 et 17
-	else if (date.getHours() <= time1.getHours() && date.getHours() >= time2.getHours()) {
-		
-			// on passe l'id du body en body-night
-			$body.attr("id", "body-night");
-
-			// on change la couleur du texte
-			$table.css({"color":"white"});
-			$a.css({"color":"#3e7bc7"});
-
-	};
-
 	// appui sur le bouton "Jour"
 	$("#mode-jour").click(function(){
 
@@ -77,7 +54,7 @@ $(document).ready(function() {
 
 			// on change la couleur du texte
 			$table.css({"color":"white"});
-			$a.css({"color":"#3e7bc7"});
+			$a.css({"color":"#e65400"});
 		}
 
 		else {
@@ -87,7 +64,7 @@ $(document).ready(function() {
 
 			// on change la couleur du texte
 			$table.css({"color":"white"});
-			$a.css({"color":"#3e7bc7"});
+			$a.css({"color":"#e65400"});
 		}
     });
 
