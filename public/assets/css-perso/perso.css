@@ -11,6 +11,16 @@ html {
   scroll-behavior: smooth;
 }
 
+h1 {
+  text-align: center;
+  font-size: 5rem !important;
+  padding: 2rem;
+}
+
+a {
+  text-decoration: none !important;
+}
+
 #body-day {
   background-color: white !important;
   color: black !important;
@@ -23,4 +33,107 @@ html {
 
 .a-link {
   color: grey !important;
+}
+
+.persotable {
+  max-width: 1400px !important;
+  margin: auto;
+  font-size: 1.2rem;
+  font-family: 'Courier New', monospace;
+}
+
+.center {
+  text-align: center;
+  padding-bottom: 2rem;
+}
+
+.createnew {
+  font-size: 1.5rem;
+}
+
+.showedit {
+  text-align: right;
+ 
+}
+
+.showedit a {
+   font-size: 1.4rem;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-top: 2rem;
+}
+
+.pagination span {
+  padding: 0.3rem;
+}
+
+.bouton-mode {
+  padding: 10px 1.5rem 10px 1.5rem;
+  border: none;
+  color: #fff;
+}
+
+#mode-jour {
+  background-color: #d9a61c;
+  margin-right: 0.4rem;
+}
+
+#mode-nuit {
+  background-color: #0a1852;
+  margin-right: 2rem;
+}
+
+.bouton-mode:hover {
+  font-weight: bold;
+}
+
+.edit {
+  text-align: center;
+  font-size: 1.4rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.delete {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+}
+
+.delete button {
+  background-color: red;
+  color: white;
+}
+
+.delete button:hover {
+  color: white;
+  font-weight: bold;
+}
+
+.new-form {
+  max-width: 1400px !important;
+  margin: auto;
+  font-size: 1.2rem;
+  font-family: 'Courier New', monospace;
+  margin-bottom: 2rem;
+}
+
+.new-form button {
+  background-color: green;
+  color: white;
+  display: block;
+  margin: auto;
+  font-family: 'Calibri';
+  font-size: 1.2rem;
+}
+
+.new-form button:hover {
+  color: white;
+  font-weight: bold;
 }
