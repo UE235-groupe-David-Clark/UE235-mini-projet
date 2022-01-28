@@ -10,3 +10,17 @@
 html {
   scroll-behavior: smooth;
 }
+
+#body-day {
+  background-color: white !important;
+  color: black !important;
+}
+
+#body-night {
+  background-color: #141414 !important;
+  color: white !important;
+}
+
+.a-link {
+  color: grey !important;
+}

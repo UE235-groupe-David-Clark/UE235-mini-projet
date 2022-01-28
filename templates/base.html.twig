@@ -4,12 +4,12 @@
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}
+
+			<!-- CSS Perseonnalisation interface -->
+            <link href="{{ asset('assets/css-perso/perso.css') }}" rel="stylesheet" type="text/css"/>
 			
 			<!-- CSS Bootstrap -->
 			<link href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css"/>
-
-			<!-- CSS Perseonnalisation interface -->
-            <link href="{{ asset('assets/perso-css/perso.css') }}" rel="stylesheet" type="text/css"/>
 			
         {% endblock %}
     </head>
@@ -18,18 +18,18 @@
 
     		<!-- Menu dynamique -->
 	        <header>
-	        	<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+	        	<nav id="nav" class="navbar navbar-expand-sm navbar-dark bg-dark">
 			        <div class="collapse navbar-collapse">
 			            <ul class="navbar-nav mr-auto">
 			                {% for lien in liens %}
 			                    <li class="nav-item">
 			                    	{% if lien.subLink == false %}
-			                        	<a class="nav-link" href="{{ path(lien.path) }}">{{ lien.name|capitalize }}</a>
+			                        	<a class="nav-link a-link" href="{{ path(lien.path) }}">{{ lien.name|capitalize }}</a>
 			                        {% endif %}
 			                        	<ul class="navbar-nav mr-auto">
 					                        {% if lien.subLink == true %}
 						                        <li class="nav-item">
-						                        	<a class="nav-link" href="{{ path(lien.path) }}">{{ lien.name|capitalize }}</a>
+						                        	<a class="nav-link a-link" href="{{ path(lien.path) }}">{{ lien.name|capitalize }}</a>
 						                        </li>
 					                        {% endif %}
 			                        	</ul>
@@ -37,6 +37,8 @@
 			                {% endfor %}
 			            </ul>
 			        </div>
+			        <button id="mode-jour">Jour</button>
+			        <button id="mode-nuit">Nuit</button>
 			    </nav>
 	        </header>
 
@@ -54,10 +56,9 @@
 			<!-- JS Bootstrap -->
 			<script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}" type="text/javascript"/></script>
 
-
 			<!-- JS Perseonnalisation interface -->
-            <link href="{{ asset('assets/perso-js/perso.js') }}" rel="stylesheet" type="text/css"/>
-			
+            <script src="{{ asset('assets/js-perso/perso.js') }}" type="text/javascript"/></script>
+            
         {% endblock %}
     </body>
 </html>
